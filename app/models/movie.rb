@@ -13,10 +13,4 @@ class Movie < ActiveRecord::Base
       return Movie.where(rating: ratings_list)
     end
   end
-  def self.titles()
-    return Movie.all.order("title")
-  end
-  def self.releases()
-    return Movie.all.order("release_date")
-  end
 end
