@@ -9,14 +9,14 @@ class MoviesController < ApplicationController
   def index
     if (params[:sort].nil? and !session[:sort].nil?) and (params[:ratings].nil? and !session[:ratings].nil?)
       flash.keep
-      redirect_to movies_path(sort: session[:sort], ratings: session[:ratings].nil? ? [] : session[:ratings])
+      redirect_to movies_path(sort: session[:sort], ratings: session[:ratings].nil? ? Movie.all_ratings : session[:ratings])
     end
     @all_ratings = Movie.all_ratings
     @sort = params[:sort]# || session[:sort]
-    @ratings = params[:ratings].nil?() ? [] : params[:ratings].keys
+    @ratings = params[:ratings].nil?() ? @all_ratings : params[:ratings].keys
     @ratings_to_show = @ratings# || session[:ratings]
     session[:sort] = @sort
-    session[:ratings] = params[:ratings].nil?() ? [] : params[:ratings]
+    session[:ratings] = params[:ratings].nil?() ? {'G':1,'PG':1,'PG-13':1,'R':1} : params[:ratings]
     @movies = Movie.with_ratings(@ratings_to_show).order(@sort)
   end
 
