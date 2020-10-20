@@ -11,6 +11,7 @@ class MoviesController < ApplicationController
 #       flash.keep
 #       redirect_to movies_path(sort: session[:sort], ratings: session[:ratings].nil? ? Movie.all_ratings : session[:ratings])
 #     end
+    byebug
     @all_ratings = Movie.all_ratings
     @sort = params[:sort] || session[:sort]
     @ratings = params[:ratings] || session[:ratings] || Hash[@all_ratings.map {|rating| [rating, rating]}]

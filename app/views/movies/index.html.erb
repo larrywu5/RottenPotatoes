@@ -17,7 +17,7 @@
     <tr>
       <th id="title_header" class = <%="#{'bg-warning hilite' if @sort == 'title'}"%> ><%= link_to "Movie Title", movies_path({'sort': 'title', 'ratings': Hash[@ratings_to_show.collect { |item| [item, ""] } ]}) %></th>
       <th>Rating</th>
-      <th id="release_date_header" class = <%="#{'bg-warning hilite' if @sort == 'release_date'}"%>><%= link_to "Release Date", movies_path({'sort': 'release_date', "ratings": Hash[@ratings_to_show.collect { |item| [item, ""] } ]})%></th>
+      <th id="release_date_header" class = <%= "#{'bg-warning hilite' if @sort == 'release_date'}" %>><%= link_to "Release Date", movies_path({'sort': 'release_date', "ratings": Hash[@ratings_to_show.collect { |item| [item, ""] } ]}) %></th>
       <th>More Info</th>
     </tr>
   </thead>
